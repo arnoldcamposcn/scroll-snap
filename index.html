@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Snap Page</title>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Scroll Snap Page</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            html {
+                scroll-behavior: smooth;
+            }
+    
+            body {
+                font-family: Arial, sans-serif;
+            }
+    
+            body {
+  overflow: hidden;
+}
+
+
+
+            header {
+                position: sticky;
+                top: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+                padding: 1rem;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+    
+            nav {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 2rem;
+            }
+    
+            nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+    
+            .container {
+                height: 100vh;
+                scroll-snap-type: y mandatory;
+                overflow-y: scroll;
+                scroll-behavior: smooth;
+            }
+    
+            section {
+                height: 100vh;
+                scroll-snap-align: start;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2rem;
+                color: white;
+            }
+    
+            #section1 { background-color: #FF6B6B; }
+            #section2 { background-color: #4ECDC4; }
+            #section3 { background-color: #45B7D1; }
+            #section4 { background-color: #96CEB4; }
+            #section5 { background-color: #FFEEAD; }
+        </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <h1>Logo</h1>
+            <ul>
+                <li><a href="#section1">Sección 1</a></li>
+                <li><a href="#section2">Sección 2</a></li>
+                <li><a href="#section3">Sección 3</a></li>
+                <li><a href="#section4">Sección 4</a></li>
+                <li><a href="#section5">Sección 5</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="section1">
+            <h2>Sección 1</h2>
+        </section>
+        <section id="section2">
+            <h2>Sección 2</h2>
+        </section>
+        <section id="section3">
+            <h2>Sección 3</h2>
+        </section>
+        <section id="section4">
+            <h2>Sección 4</h2>
+        </section>
+        <section id="section5">
+            <h2>Sección 5</h2>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            const container = document.querySelector('.container');
+            const direction = event.deltaY > 0 ? 1 : -1;
+            container.scrollBy({
+                top: direction * window.innerHeight,
+                behavior: 'smooth'
+            });
+        }, { passive: false });
+    </script>
+</body>
+</html>
